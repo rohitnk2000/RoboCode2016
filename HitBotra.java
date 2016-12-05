@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * A modular bot adhering to the RoboPart Interface.
  * 
- * @author Rohit Kulkarni
+ * @author Rohit Kulkarni and Ritik Batra
  * @version 5/12/16
  * 
  * @author Period - 1
