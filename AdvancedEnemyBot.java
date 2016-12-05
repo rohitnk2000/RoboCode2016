@@ -6,7 +6,7 @@ import robocode.*;
 /**
  * Record the advanced state of an enemy bot.
  * 
- * @author Rohit Kulkarni
+ * @author Rohit Kulkarni and Ritik Batra
  * @version 5/10/16
  * 
  * @author Period - 1
