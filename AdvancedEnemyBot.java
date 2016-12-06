@@ -6,13 +6,13 @@ import robocode.*;
 /**
  * Record the advanced state of an enemy bot.
  * 
- * @author Rohit Kulkarni and Ritik Batra
- * @version 5/10/16
+ * @author Ritik Batra and Rohit Kulkarni
+ * @version May 9, 2016
  * 
  * @author Period - 1
  * @author Assignment - AdvancedEnemyBot
  * 
- * @author Sources - none
+ * @author Sources - None
  */
 public class AdvancedEnemyBot extends EnemyBot
 {
@@ -22,43 +22,43 @@ public class AdvancedEnemyBot extends EnemyBot
 
 
     /**
-     * resets all procedures
+     * This method simply resets at the start of the code.
      */
     public AdvancedEnemyBot()
     {
         reset();
     }
 
-
     /**
-     * returns x value of enemy bot
+     * This method returns the x value of the enemy.
      * 
-     * @return x value of enemy bot
+     * @return x
+     *          the x-value of the enemy robot.
      */
     public double getX()
     {
-        return x; // Fix this!!
+        return x;
     }
 
-
     /**
-     * returns x value of enemy bot
+     * This method returns the y value of the enemy.
      * 
-     * @return x value of enemy bot
+     * @return y
+     *          the y-value of the enemy robot.
      */
     public double getY()
     {
-        return y; // Fix this!!
+        return y;
     }
 
-
     /**
-     * updates all enemy information and gets the absolute bearing of enemy bot
+     * This updates the robot's understanding of the enemy robots.
      * 
      * @param e
-     *            - scanned event
+     *          this is the event of the robot scanning an enemy.
+     *          
      * @param robot
-     *            - enemy bot
+     *          this specifies which robot is scanned.
      */
     public void update( ScannedRobotEvent e, Robot robot )
     {
@@ -68,51 +68,53 @@ public class AdvancedEnemyBot extends EnemyBot
         {
             absBearingDeg += 360;
         }
-        x = robot.getX() + Math.sin( Math.toRadians( absBearingDeg ) ) * 
-                                                        e.getDistance();
-        y = robot.getY() + Math.cos( Math.toRadians( absBearingDeg ) ) * 
-                                                        e.getDistance();
+        // yes, you use the _sine_ to get the X value because 0 deg is North
+        x = robot.getX() + Math.sin( Math.toRadians( absBearingDeg ) )
+                           * e.getDistance();
+        // yes, you use the _cosine_ to get the Y value because 0 deg is North
+        y = robot.getY() + Math.cos( Math.toRadians( absBearingDeg ) )
+                           * e.getDistance();
+
     }
 
-
     /**
-     * uses sin to get the heading of the robot
+     * This method returns the future x value.
      * 
      * @param when
-     *            - value that describes when to return x
-     * @return - a double that is equivalent to the degrees to turn for the
-     *         enemy bot
+     *          this is the the long value that describes when to return x.
+     * @return x + Math.sin( Math.toRadians( getHeading() ) )
+                   * getVelocity() * when;
+     *          the x-value of the enemy robot.
      */
     public double getFutureX( long when )
     {
-        return x + Math.sin( Math.toRadians( getHeading() ) ) * getVelocity() 
-                                                                        * when;
+        return x + Math.sin( Math.toRadians( getHeading() ) )
+                   * getVelocity() * when;
     }
 
-
     /**
-     * uses cos to get the heading of the robot
+     * This method returns the future y value.
      * 
      * @param when
-     *            - value that describes when to return y
-     * @return - a double that is equivalent to the degrees to turn for the
-     *         enemy bot
+     *          this is the the long value that describes when to return y.
+     * @return y + Math.cos( Math.toRadians( getHeading() ) )
+                    * getVelocity() * when;
+     *          the y-value of the enemy robot.
      */
     public double getFutureY( long when )
     {
-        return y + Math.cos( Math.toRadians( getHeading() ) ) * getVelocity() 
-                                                                        * when;
+        return y + Math.cos( Math.toRadians( getHeading() ) )
+                    * getVelocity() * when;
     }
 
-
     /**
-     * resets x and y coordinates
+     * This method resets all the variables of the EnemyBot.
      */
     public void reset()
     {
         super.reset();
-        x = 0;
-        y = 0;
+        x = 0.0;
+        y = 0.0;
     }
 
 }
